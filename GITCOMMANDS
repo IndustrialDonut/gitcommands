@@ -41,4 +41,9 @@ git merge
 so git merge I believe will take a branch and all of its NEW COMMITS since the time of diverging, and append them to the current head all as their own discrete commits.
 This is opposed to making one single 'merge commit'
 let's test this
+This is correct. Each commit I just made was APPENDED to the HEAD of main when I ran 
+git merge test/merge  from main branch
 
+
+What about merge conflicts then? 
+And rebasing instead of merge?
