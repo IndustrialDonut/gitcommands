@@ -29,3 +29,11 @@ so basically,
 git revert -n HEAD~3..HEAD~0 would walk back commits from now until 3 commits ago and the -n would mean not automatically make commits as it does so,
 follow it up with a git commit to commit the revert all at once in a single commit with a nice message why.
 git revert HEAD~3 would JUST apply a commit that reverts the changes made in HEAD~3 and that's it. no walking back every commit along the way.
+
+
+git fetch - this basically retrieves the remote repository updates
+git branch -a - that will list the remote branches that are available...
+git merge origin/main - (for example) which would merge the fetched updates into your currently checked out branch
+git pull - is effectively just git fetch and then git merge origin/branch
+
+git merge 
