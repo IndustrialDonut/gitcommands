@@ -1,0 +1,31 @@
+https://stackoverflow.com/questions/8452820/how-to-compare-the-working-tree-with-a-commit
+git diff - shows the diff between working tree and git index
+git diff --cached - shows the diff between git index and last commit
+git diff HEAD - shows diff between working tree and last commit 
+
+
+https://git-scm.com/docs/git-restore
+git restore <file> - restores a file to the version stored in the index - this is the same as git restore --worktree
+git restore --staged - restores the version of a file in the index to the version at the HEAD (by default). this has NO EFFECT ON THE WORKING TREE ! It is not 'taking the file from the index and placing it back in the working tree', it is just restoring the index. You would have to restore the working directory, then restore the index, if what you wanted was to delete changes made from the index in the working directory, and have your index changes back in your working directory.
+git restore --staged --worktree - if for some reason you want to completely reset back to the HEAD both your index and working tree changes
+--source=HEAD is the default for restoring --cached, and --source=cache (I guess?) is effectively the default for restoring --worktree
+--source=TREE is what you may specify anyway for restoring to whatever you want.
+
+
+https://git-scm.com/docs/git-reset
+git reset - this is about resetting the index, working tree, or head to a previous commit
+git reset - command run alone will restore the index to the head, unstaging changes, the same as git restore --cached *
+git reset --hard - this will restore both the index and the working tree to the head, should be the same as git restore --cached --worktree
+git reset --soft, --mixed, --hard , --soft will NOT TOUCH THE INDEX OR THE WORKING TREE, therefore when you JUST reset the head, you end up with your previous index
+appearing now as relative changes ready to commit, and your working tree synced with that, so no changes in your working tree relative to your index.
+mixed is the default, and so this will just reset the index and the head, not the working tree. Therefore when you reset, you will not appear to have staged changes,
+and your index will be wiped.
+hard will basically completely everything to a specified commit. it will wipe the index and the working tree.
+
+
+https://git-scm.com/docs/git-revert
+git revert
+so basically,
+git revert -n HEAD~3..HEAD~0 would walk back commits from now until 3 commits ago and the -n would mean not automatically make commits as it does so,
+follow it up with a git commit to commit the revert all at once in a single commit with a nice message why.
+git revert HEAD~3 would JUST apply a commit that reverts the changes made in HEAD~3 and that's it. no walking back every commit along the way.
