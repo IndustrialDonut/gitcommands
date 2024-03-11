@@ -36,4 +36,9 @@ git branch -a - that will list the remote branches that are available...
 git merge origin/main - (for example) which would merge the fetched updates into your currently checked out branch
 git pull - is effectively just git fetch and then git merge origin/branch
 
-git merge 
+https://git-scm.com/docs/git-merge
+git merge
+so git merge I believe will take a branch and all of its NEW COMMITS since the time of diverging, and append them to the current head all as their own discrete commits.
+This is opposed to making one single 'merge commit'
+let's test this
+
