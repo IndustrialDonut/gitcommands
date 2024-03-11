@@ -1,7 +1,7 @@
 1
 2 hi from test/merge
 3 hi from test/merge again
-4 mod on line 4 from main
+4 mod on line 4 from main  line 4 rebase test from main
 5 hi from test/merge
 6
 7 hi from main
