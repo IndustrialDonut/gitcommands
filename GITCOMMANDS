@@ -54,6 +54,23 @@ This means that you will always want to either have your changes committed, stas
 
 What about merge conflicts then? 
 So, as I learned, it seems that the minimum conflicting case for a merge conflict would be modificatoins on line 1 and line 3 of a file, since git uses the surrounding lines for context. If this comes up, it was easy to resolve the way I wanted with VSCODE mergetool to accept the "combination" and that gave me just the result I wanted which would interlock the changes in the same file without adding any new lines by the standard "accept both" option
+After merging, use
+git branch -d branch_name - this will REQUIRE THAT THE BRANCH WAS SUCCESFULLY MERGED into the upstream branch before deleting it
+do not use -D as that's an alias for FORCE delete even if it wasn't merged. Obviously only use that if you want to trash can everything in there.
 
 
+https://git-scm.com/book/en/v2/Git-Branching-Rebasing
 And rebasing instead of merge?
+git rebase will take your changes on a branch and re-apply them on top of the state of another  branch
+
+so like
+git switch -c my_branch
+edit things, add things
+git commit
+in the meantime, main had a commit made too
+git rebase main (from my_branch)
+git switch main
+git merge my_branch
+and you should have a nice linear history now instead of a merge commit, even though normally merge by fast-forward couldn't just work because there was a new commit in main. 
+SEE PERILS OF REBASING https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+Do not rebase commits that exist outside your repository and that people may have based work on.
