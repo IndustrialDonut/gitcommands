@@ -53,4 +53,7 @@ This means that you will always want to either have your changes committed, stas
 
 
 What about merge conflicts then? 
+So, as I learned, it seems that the minimum conflicting case for a merge conflict would be modificatoins on line 1 and line 3 of a file, since git uses the surrounding lines for context. If this comes up, it was easy to resolve the way I wanted with VSCODE mergetool to accept the "combination" and that gave me just the result I wanted which would interlock the changes in the same file without adding any new lines by the standard "accept both" option
+
+
 And rebasing instead of merge?
